@@ -28,7 +28,7 @@ class XmlTag:
             self.children.extend(self.properties.pop("children"))
     
     def add_prop(self, key: str, value):
-        self.properties[name] = text
+        self.properties[key] = value
     
     def add_child(self, child: XmlTag):
         self.children.append(child)
@@ -54,6 +54,8 @@ class XmlTag:
         if len(self.children) > 0:
             lines.append(">")
             for child in self.children:
+                if child is None:
+                    continue
                 lines.append("\n")
                 child.__render(lines, indent+2)
             lines.append("\n")
@@ -102,19 +104,23 @@ class Group(XmlTag):
 
 class Rect(XmlTag):
     def __init__(self, **kwargs):
+        _convert_transform(kwargs)
         super().__init__('rect', **kwargs)
 
 
 class Circle(XmlTag):
     def __init__(self, **kwargs):
+        _convert_transform(kwargs)
         super().__init__('circle', **kwargs)
 
 
 class Line(XmlTag):
     def __init__(self, **kwargs):
+        _convert_transform(kwargs)
         super().__init__('line', **kwargs)
 
 
 class Path(XmlTag):
     def __init__(self, **kwargs):
+        _convert_transform(kwargs)
         super().__init__('path', **kwargs)
