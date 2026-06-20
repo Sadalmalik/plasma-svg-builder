@@ -1,0 +1,9 @@
+
+
+Hints list:
+
+hint-apply-color-scheme
+hint-stretch-borders
+hint-tile-center
+hint-hands-shadow-offset-to-south
+hint-hands-shadow-offset-to-west
